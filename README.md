@@ -1,3 +1,22 @@
+
+Update Dockerfile
+fix(vllm): add ARM64-compatible dependencies for vLLM 0.6.6
+
+Note: This is a temporary "quick-and-dirty" solution (in German: "Pfusch") to get things working with vLLM 0.6.6, even though vLLM 0.7.0 is now available. While not the most elegant fix, it makes the build process functional for now until a proper solution can be implemented.
+
+- Install compressed-tensors==0.9.1 to resolve ModuleNotFoundError
+- Install xformers==0.0.30 to resolve ModuleNotFoundError and for transformer operations
+- Include autoawq==0.2.8 for quantized model support
+- Pin protobuf==3.20.3 to prevent version conflicts
+- Maintain compatibility with NVIDIA Jetson AGX Orin (ARM64)
+- Preserve original jetson-containers build process
+
+This addresses the compressed_tensors and xformers missing module error while maintaining compatibility with Jetson's ARM64 architecture through careful dependency version pinning.
+
+Signed-off-by: @ARISTheGod and with help from DeepSeek R1
+
+---
+
 [![a header for a software project about building containers for AI and machine learning](https://raw.githubusercontent.com/dusty-nv/jetson-containers/docs/docs/images/header_blueprint_rainbow.jpg)](https://www.jetson-ai-lab.com)
 
 # Machine Learning Containers for Jetson and JetPack
