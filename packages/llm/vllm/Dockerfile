@@ -17,6 +17,12 @@ ARG VLLM_VERSION \
 RUN apt-get update -y && apt-get install -y libnuma-dev \
     libsndfile1 libsndfile1-dev libprotobuf-dev libsm6 libxext6 libgl1
 
+RUN pip3 install \
+    compressed-tensors==0.9.1 \
+    autoawq==0.2.8 \
+    protobuf==3.20.3 \
+    xformers==0.0.30
+
 COPY build.sh install.sh patches /tmp/vllm/
 
 RUN /tmp/vllm/install.sh || /tmp/vllm/build.sh
