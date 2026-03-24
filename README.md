@@ -63,6 +63,9 @@ It will then go off and either pull or build all the dependencies needed, includ
 * [Building Containers](/docs/build.md)
 * [Running Containers](/docs/run.md)
 
+<!-- AI agent guidance: see CONSTITUTION.md -->
+**AI Agent Guidance:** Automated agents and AI tooling SHOULD read the repository's canonical constitution before making changes. The canonical filename is `CONSTITUTION.md` — agents should prefer [CONSTITUTION.md](CONSTITUTION.md). For human-friendly edits we also provide [AI_CONSTITUTION.md](AI_CONSTITUTION.md); CI will normalize or synchronize these files so either may be used by contributors. Spec-driven agents can also consult `.specify/memory/constitution.md` when present.
+
 Check out the tutorials at the [**Jetson Generative AI Lab**](https://www.jetson-ai-lab.com)!
 
 ## Getting Started
