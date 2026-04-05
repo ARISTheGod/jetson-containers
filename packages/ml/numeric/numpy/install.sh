@@ -1,6 +1,7 @@
 set -ex
 
 uv pip install --force-reinstall ${NUMPY_PACKAGE}
+uv pip install pyyaml
 uv pip show numpy && python3 -c 'import numpy; print(numpy.__version__)'
 
 set +e

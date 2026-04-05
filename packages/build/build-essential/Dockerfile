@@ -37,6 +37,7 @@ RUN set -ex \
         wget \
         wget2 \
         curl \
+        zstd \
         nano \
         zip \
         unzip \

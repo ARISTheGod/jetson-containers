@@ -7,6 +7,8 @@
 ARG BASE_IMAGE
 FROM ${BASE_IMAGE}
 
+ARG NVIDIA_DRIVER_CAPABILITIES
+
 ARG IS_SBSA
 ARG ARCH_OPT
 # https://github.com/numpy/numpy/issues/18131#issuecomment-755438271

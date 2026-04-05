@@ -7,6 +7,8 @@
 ARG BASE_IMAGE
 FROM ${BASE_IMAGE}
 
+ARG NVIDIA_DRIVER_CAPABILITIES
+
 # upgrade cmake via kitware's apt repo - https://apt.kitware.com/
 # typically --only-upgrade is used in the apt install, but cmake wasn't previously installed in this container	
 # previous issue regarding kitware's rotating GPG keys: https://github.com/dusty-nv/jetson-containers/issues/216

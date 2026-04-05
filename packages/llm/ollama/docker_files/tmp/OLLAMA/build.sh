@@ -16,6 +16,8 @@ fi
 
 cd "${OLLAMA_HOME}"
 
+find . -name cpu_linux.go -exec sed -i 's/strconv.ParseInt(\([^,]*\), 10, 64)/func(s string) (int64, error) { if s == "max" { return 0, nil }; return strconv.ParseInt(s, 10, 64) }(\1)/g' {} +
+
 cmake -S . -B build \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_CUDA_COMPILER="${CMAKE_CUDA_COMPILER}" \
@@ -24,7 +26,7 @@ cmake -S . -B build \
 
 cmake --build build -j"$(nproc)"
 
-go build -o "${OLLAMA_HOME}/ollama" .
+go build -v -o "${OLLAMA_HOME}/ollama" .
 
 ln -sf "${OLLAMA_HOME}/ollama" /usr/local/bin/ollama
 if [ $? -ne 0 ]; then
@@ -39,7 +41,7 @@ if [ $? -ne 0 ]; then
   echo "Warning: Failed to create symlink /bin/ollama" >&2
 fi
 
-echo "/opt/ollama/build/lib/ollama" > /etc/ld.so.conf.d/ollama.conf
+echo "/usr/local/lib/ollama" > /etc/ld.so.conf.d/ollama.conf
 ldconfig
 
 uv pip install --no-cache-dir ollama

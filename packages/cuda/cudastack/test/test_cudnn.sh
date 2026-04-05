@@ -8,6 +8,7 @@ if [ -d $CUDNN_SAMPLES ]; then
 	cd $CUDNN_SAMPLES/conv_sample/
 	if [ ! -f conv_sample ]; then
 		echo "building cuDNN conv_sample"
+		find . -name fp16_emu.cpp -exec sed -i '164i\    return 0.0f;' {} +
 		make -j$(nproc)
 	fi
 	./conv_sample

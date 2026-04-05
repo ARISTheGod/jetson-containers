@@ -8,6 +8,8 @@
 ARG BASE_IMAGE
 FROM ${BASE_IMAGE}
 
+ARG NVIDIA_DRIVER_CAPABILITIES
+
 # set the model cache dir
 ENV TRANSFORMERS_CACHE=/data/models/huggingface \
     HUGGINGFACE_HUB_CACHE=/data/models/huggingface \

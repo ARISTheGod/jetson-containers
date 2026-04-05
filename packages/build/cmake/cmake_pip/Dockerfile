@@ -8,6 +8,8 @@
 ARG BASE_IMAGE
 FROM ${BASE_IMAGE}
 
+ARG NVIDIA_DRIVER_CAPABILITIES
+
 #ENV CMAKE_POLICY_VERSION_MINIMUM="3.10"
 COPY install.sh /tmp/cmake/install.sh
 RUN /tmp/cmake/install.sh

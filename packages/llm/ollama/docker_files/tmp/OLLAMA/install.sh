@@ -7,12 +7,12 @@ function download_tar() {
   printf "Downloading ${OLLAMA_RELEASE_URL}/$1\n"
   wget $WGET_FLAGS "${OLLAMA_RELEASE_URL}/$1"
   printf "Extracting $1 to /usr/local\n\n"
-  tar -xzvf $1 -C /usr/local
-  rm ollama-*.tgz
+  tar -I zstd -xvf $1 -C /usr/local
+  rm ollama-*.tar.zst
 }
 
-download_tar "ollama-linux-arm64.tgz"
-download_tar "ollama-linux-arm64-jetpack${JETPACK_VERSION_MAJOR}.tgz"
+download_tar "ollama-linux-arm64.tar.zst"
+download_tar "ollama-linux-arm64-jetpack${JETPACK_VERSION_MAJOR}.tar.zst"
 
 uv pip install ollama
 

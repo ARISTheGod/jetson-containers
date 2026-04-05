@@ -6,6 +6,8 @@
 ARG BASE_IMAGE
 FROM ${BASE_IMAGE}
 
+ARG NVIDIA_DRIVER_CAPABILITIES
+
 # default Go version can be overridden by GOLANG_VERSION build arg
 ARG GOLANG_VERSION="1.22.7"
 
